@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk Girly Portfolio Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Cyberpunk Dark Base */
+    --background: 271 100% 2%;
+    --foreground: 315 100% 95%;
+
+    /* Neon Card System */
+    --card: 271 50% 8%;
+    --card-foreground: 315 100% 95%;
+
+    --popover: 271 50% 8%;
+    --popover-foreground: 315 100% 95%;
+
+    /* Neon Pink Primary */
+    --primary: 315 100% 65%;
+    --primary-foreground: 271 100% 2%;
+
+    /* Cyber Purple Secondary */
+    --secondary: 271 100% 45%;
+    --secondary-foreground: 315 100% 95%;
+
+    /* Muted Cyber */
+    --muted: 271 30% 15%;
+    --muted-foreground: 315 30% 70%;
+
+    /* Neon Teal Accent */
+    --accent: 180 100% 50%;
+    --accent-foreground: 271 100% 2%;
+
+    /* Danger Red */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 315 100% 95%;
+
+    /* Glowing Borders */
+    --border: 315 50% 25%;
+    --input: 271 50% 15%;
+    --ring: 315 100% 65%;
+
+    /* Custom Cyberpunk Colors */
+    --neon-pink: 315 100% 65%;
+    --neon-blue: 195 100% 60%;
+    --neon-purple: 271 100% 65%;
+    --neon-teal: 180 100% 50%;
+    --cyber-dark: 271 100% 2%;
+    --cyber-darker: 271 100% 1%;
+    --pixel-grid: 315 20% 20%;
+
+    /* Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(315, 100%, 65%), hsl(271, 100%, 65%));
+    --gradient-neon: linear-gradient(45deg, hsl(315, 100%, 65%), hsl(180, 100%, 50%));
+    --gradient-dark: linear-gradient(180deg, hsl(271, 100%, 2%), hsl(271, 50%, 8%));
+
+    /* Shadows & Glows */
+    --glow-pink: 0 0 20px hsl(315, 100%, 65%, 0.5);
+    --glow-blue: 0 0 20px hsl(195, 100%, 60%, 0.5);
+    --glow-purple: 0 0 20px hsl(271, 100%, 65%, 0.5);
+    --shadow-cyber: 0 8px 32px hsl(271, 100%, 2%, 0.8);
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Cyberpunk Animations & Effects */
+@layer components {
+  .neon-glow {
+    filter: drop-shadow(var(--glow-pink));
+  }
+  
+  .neon-glow-blue {
+    filter: drop-shadow(var(--glow-blue));
+  }
+  
+  .neon-glow-purple {
+    filter: drop-shadow(var(--glow-purple));
+  }
+  
+  .pixel-border {
+    border-image: linear-gradient(45deg, hsl(315, 100%, 65%), hsl(180, 100%, 50%)) 1;
+  }
+  
+  .glitch-text {
+    position: relative;
+    animation: glitch 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch-text::before {
+    animation: glitch-1 0.5s infinite linear alternate-reverse;
+    color: hsl(315, 100%, 65%);
+    z-index: -1;
+  }
+  
+  .glitch-text::after {
+    animation: glitch-2 0.5s infinite linear alternate-reverse;
+    color: hsl(180, 100%, 50%);
+    z-index: -2;
+  }
+  
+  .floating {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite alternate;
+  }
+  
+  .gradient-border {
+    background: var(--gradient-cyber);
+    padding: 2px;
+    border-radius: calc(var(--radius) + 2px);
+  }
+  
+  .gradient-border > * {
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-2px, -1px); }
+  20% { transform: translate(-3px, 1px); }
+  30% { transform: translate(3px, 2px); }
+  40% { transform: translate(-1px, -1px); }
+  50% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, 1px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(2px, 1px); }
+  20% { transform: translate(3px, -1px); }
+  30% { transform: translate(-3px, -2px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, -1px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-neon {
+  0% { 
+    box-shadow: 0 0 5px hsl(315, 100%, 65%);
+  }
+  100% { 
+    box-shadow: 0 0 20px hsl(315, 100%, 65%), 0 0 30px hsl(315, 100%, 65%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(315, 100%, 65%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(180, 100%, 50%, 0.1) 0%, transparent 50%);
+  }
+}
